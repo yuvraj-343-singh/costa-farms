@@ -1,0 +1,179 @@
+<ion-header>
+  <!-- <ion-toolbar>
+    <ion-title>App</ion-title>
+
+  </ion-toolbar> -->
+</ion-header>
+
+<ion-content class="bg-secondary ">
+  <ion-grid>
+    <ion-row>
+      <ion-col [size]="12">
+        <ion-row class="ion-margin-top ion-align-items-center">
+          <ion-col class="input-col" size-md="6" size-sm="5" size="12">
+            <ion-item class="id-input ">
+              <ion-input #input placeholder="Enter Input" value="" class=" "></ion-input>
+            </ion-item>
+          </ion-col>
+          <ion-col size-sm="3" size="12">
+            <ion-button class=" ion-margin-start input-form-btn " [disabled]="input.value == ''" (click)="loadData(input.value)">
+              <ion-spinner *ngIf="loadDataSubscription?.closed === false" name="dots"></ion-spinner>
+              <span  *ngIf="loadDataSubscription?.closed !== false"> Update</span>
+            </ion-button>
+          </ion-col>
+          
+        </ion-row>
+      </ion-col>   
+    </ion-row>
+
+    <ion-col [size]="12" ion-padding-top ion-padding-bottom *ngIf="dataList.length">
+      <div class="wrapper">
+        <div class="table-wrapper overflow-x-auto">
+          <ion-row class="table-top ">
+            <ion-col size-md="4" size="12" class="ion-no-padding"> 
+              <div class="bg-primary header">MFGNUM_0</div>
+              <div class="body">{{dataList[0].MFGNUM_0}}</div>
+            </ion-col>
+            <ion-col size-md="4" size="12"  class="ion-no-padding">
+              <div class="bg-primary header" color="light">ITMREF_0</div>
+              <div class="body">{{dataList[0].ITMREF_0}}</div>
+            </ion-col>
+            <ion-col size-md="4" size="12"  class="ion-no-padding">
+              <div class="ion-text-center header bg-primary">XDES4A_0</div>
+              <div class="ion-text-center body">{{dataList[0].XDES4A_0}}</div>
+            </ion-col> 
+          </ion-row>
+        </div>
+        <div class="ion-margin data-table mt-0 table-wrapper overflow-x-auto">
+          <table class="table">
+            <thead>
+              <tr>
+                <th *ngFor="let item of tableHeaders">
+                  {{item}}
+                </th>
+                <th>Qty Completed</th>
+                <th>Task Completed</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let data of dataList">
+                <td>
+                  {{data.OPENUM_0}}
+                </td>
+                <td class="ion-text-start">
+                  {{data.ROODES_0}}
+                </td>
+                <td>
+                  {{data.STRDAT_0}}
+                </td>
+                <td>
+                  {{data.PRODUCTION_MFGOPE_EXTQTY_0}}
+                </td>
+                <td>
+                  {{data.EXTWST_0}}
+                </td>
+                <td>
+                  {{data['Qty Completed']}}
+                </td>
+                <td>
+                  {{data['Task Completed']}}
+                </td>
+                <td>
+                  {{data.FRCSTRDAT_0}}
+                </td>
+                <td>
+                 <div class="w-100 qty-input">
+                  <ion-item class="qty-input-wrapper">
+                    <ion-input [(ngModel)]="data.MFOTRKFLG_0" class="ion-text-center" placeholder="Enter Input"></ion-input>
+                  </ion-item>
+                 </div>
+                </td>
+                <td>
+                  <ion-item class="toggle ion-no-border">
+                    <ion-toggle [(ngModel)]="data.TRKFIRST_0" color="primary"></ion-toggle>
+                    <ion-label>Complete</ion-label>
+                  </ion-item>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="ion-text-center">
+          <ion-button size="large" class="ion-margin continue-btn" [disabled]="submitSubscription?.closed === false" (click)="update()">
+            Continue
+            <ion-spinner style="transform: scale(.6)" *ngIf="submitSubscription?.closed === false"></ion-spinner>
+          </ion-button>
+         </div>
+      </div>
+    </ion-col>
+  </ion-grid>
+
+
+
+  <!-- <ion-modal [isOpen]="isModalOpen" trigger="open-modal" #modal>
+      <ng-template>
+        <ion-header>
+          <ion-toolbar>
+            <ion-buttons slot="start">
+              <ion-button (click)="modal.dismiss()">Cancel</ion-button>
+            </ion-buttons>
+            <ion-title>Data</ion-title>
+          </ion-toolbar>
+        </ion-header>
+        <ion-content class="ion-padding">
+         <div class="ion-margin" style="overflow-x:scroll;">
+          <table>
+            <thead >
+              <tr>
+                <th *ngFor="let item of tableHeaders">
+                  {{item}}
+                </th>
+                <th>Data</th>
+                <th>Completed</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let data of dataList">
+                <td>
+                  {{data.MFGNUM_0}}
+                </td>
+                <td>
+                  {{data.ITMREF_0}}
+                </td>
+                <td>
+                  {{data.XDES4A_0}}
+                </td>
+                <td>
+                  {{data.MFGSTA_0}}
+                </td>
+                <td>
+                  {{data.OPENUM_0}}
+                </td>
+                <td>
+                  {{data.STRDAT_0}}
+                </td>
+                <td>
+                  {{data.PRODUCTION_MFGITM_EXTQTY_0}}
+                </td>
+                <td>
+                  <ion-input placeholder="Enter Input"></ion-input>
+                </td>
+                <td>
+                  <ion-item>
+                    <ion-label>Select</ion-label>
+                    <ion-select>
+                      <ion-select-option value="completed">Completed</ion-select-option>
+                      <ion-select-option value="pending">Pending</ion-select-option>
+                    </ion-select>
+                  </ion-item>
+                </td>
+              </tr>
+            </tbody>
+           </table>
+         </div>
+         <ion-button class="ion-margin">Sync</ion-button>
+        </ion-content>
+      </ng-template>
+    </ion-modal> -->
+
+</ion-content>

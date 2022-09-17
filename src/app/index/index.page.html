@@ -1,0 +1,112 @@
+<!-- <ion-header>
+  <ion-toolbar>
+    <ion-title>index</ion-title>
+  </ion-toolbar>
+</ion-header> -->
+
+<ion-content>
+  <ion-grid class="ion-no-padding">
+    <ion-row style="min-height:100vh" class="ion-align-items-center  ion-justify-content-center">
+      <ion-col size="12" class="ion-text-center">
+        <img (click)="openMFGFCY(true)" expand="block" src="assets/images/logo.png" class="logo" alt="">
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+
+  <!-- <ion-button id="open-modal" expand="block">Open</ion-button> -->
+  <ion-modal [isOpen]="isMFGFCY_0ModalOpen">
+    <ng-template>
+      <ion-header>
+        <ion-toolbar>
+          <ion-buttons slot="start">
+          </ion-buttons>
+          <ion-title class="fw-bold">MFGFCY_0</ion-title>
+          <ion-buttons slot="end">
+            <ion-button [disabled]="MFGFCY_0 ! == null" (click)="openMFGFCY(false); openGrouping(true);" expand="block" [strong]="true"><i class="fa-solid fa-list-check fs-5"></i></ion-button>
+            <ion-button (click)="openMFGFCY(false)"><i class="fa-sharp fa-solid fa-filter-circle-xmark fs-5"></i></ion-button>
+          </ion-buttons>
+        </ion-toolbar>
+      </ion-header>
+      <ion-content class="ion-padding">
+        <ion-item>
+          <ion-label> MFGFCY_0</ion-label>
+          <ion-select (ionChange)="getGroupingData($event.target.value); MFGFCY_0 = $event.target.value;" [(ngModel)]="MFGFCY_0">
+            <ion-select-option value="002">002</ion-select-option>
+            <ion-select-option value="003">003</ion-select-option>
+            <ion-select-option value="004">004</ion-select-option>
+          </ion-select>
+        </ion-item>
+      </ion-content>
+    </ng-template>
+  </ion-modal>
+
+  <ion-modal [isOpen]="isGroupingModalOpen">
+    <ng-template>
+      <ion-header>
+        <ion-toolbar>
+          <ion-title class="fw-bold">Grouping</ion-title>
+          <ion-buttons slot="end">
+            <ion-button   [disabled]="Grouping ! == null" (click)="openFRCSTRDAT_0(true)" [strong]="true"><i class="fa-solid fa-list-check fs-5"></i></ion-button>
+            <ion-button (click)="openGrouping(false)" ><i class="fa-sharp fa-solid fa-filter-circle-xmark fs-5"></i></ion-button>
+          </ion-buttons>
+        </ion-toolbar>
+      </ion-header>
+      <ion-content class="ion-padding">
+        <ion-item>
+          <ion-label> Grouping</ion-label>
+          <ion-select (ionChange)="getFRCSTRDAT_0Data($event.target.value)" [(ngModel)]="Grouping">
+            <ion-select-option *ngFor="let item of MFGFCY_0_array" [value]="item.Grouping">{{item.Grouping}}</ion-select-option>
+            <ion-select-option value="">(blank)</ion-select-option>
+          </ion-select>
+        </ion-item>
+      </ion-content>
+    </ng-template>
+  </ion-modal>
+
+  <ion-modal [isOpen]="isFRCSTRDAT_0ModalOpen">
+    <ng-template>
+      <ion-header>
+        <ion-toolbar>
+          <ion-title class="fw-bold">FRCSTRDAT_0</ion-title>
+          <ion-buttons slot="end">
+            <ion-button (click)="openWorkCentre(true)"  [disabled]="Grouping ! == null" [strong]="true"><i class="fa-solid fa-list-check fs-5"></i></ion-button>
+            <ion-button (click)="openFRCSTRDAT_0(false)"><i class="fa-sharp fa-solid fa-filter-circle-xmark fs-5"></i></ion-button>
+          </ion-buttons>
+        </ion-toolbar>
+      </ion-header>
+      <ion-content class="ion-padding">
+        <ion-item>
+          <ion-label> FRCSTRDAT_0</ion-label>
+          <ion-select (ionChange)="getWorkCentreData($event.target.value)" [(ngModel)]="FRCSTRDAT_0">
+            <ion-select-option *ngFor="let item of FRCSTRDAT_0_array" [value]="item.FRCSTRDAT_0">{{item.FRCSTRDAT_0}}</ion-select-option>
+            <ion-select-option value="">(blank)</ion-select-option>
+          </ion-select>
+        </ion-item>
+      </ion-content>
+    </ng-template>
+  </ion-modal>
+
+  <ion-modal [isOpen]="isWorkCentreModalOpen">
+    <ng-template>
+      <ion-header>
+        <ion-toolbar>
+          <ion-title class="fw-bold">Work Centre</ion-title>
+          <ion-buttons slot="end">
+            <ion-button (click)="openWorkCentre(true)"  [disabled]="FRCSTRDAT_0 ! == null" [strong]="true"><i class="fa-solid fa-list-check fs-5"></i></ion-button>
+            <ion-button (click)="openWorkCentre(false)"><i class="fa-sharp fa-solid fa-filter-circle-xmark fs-5"></i></ion-button>
+          </ion-buttons>
+        </ion-toolbar>
+      </ion-header>
+      <ion-content class="ion-padding">
+        <ion-item>
+          <ion-label> Work Centre</ion-label>
+          <ion-select (ionChange)="getWorkCentreData($event.target.value); workCentre == $event.target.value" [(ngModel)]="workCentre">
+            <ion-select-option *ngFor="let item of WorkCentre_array" [value]="item.Work_Center">{{item.Work_Center}}</ion-select-option>
+            <ion-select-option value="">(blank)</ion-select-option>
+          </ion-select>
+        </ion-item>
+      </ion-content>
+    </ng-template>
+  </ion-modal>
+
+</ion-content>

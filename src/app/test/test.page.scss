@@ -1,0 +1,138 @@
+.wrapper  {
+    background-color:#A7B6CB ;
+    .table-wrapper {
+        .table, .table-top {
+            width: 100%;
+            thead {
+                background-color: #3760B2;
+                th {
+                    padding: 0.7rem 2rem;
+                    color: white;
+                    font-weight: normal;
+                }
+            }
+            tbody {
+                td {
+                    padding: 0.8rem 3rem;
+                    min-width: 15px;
+                    text-align: center;
+                    border-bottom: 2px solid #395FB2;
+                    .qty-input {
+                        display: flex;
+                        justify-content: center;
+                        .qty-input-wrapper {
+                            width: 90px;
+                            height: 40px;
+                            border: 2px solid black;
+                            border-radius: 5px;
+                                
+                        }
+                    }
+                }
+            }
+        }
+        .table-top { 
+            .header {
+                    text-align: left;
+                    padding: 1.2rem 2rem;
+                    font-weight: bold;
+                    color: white;
+            }
+            .body {
+                padding: 0.8rem 3rem;
+            }
+        }
+    }
+    
+  
+}
+
+::ng-deep.native-input {
+    padding-top: 0!important;
+}
+
+.continue-btn, .input-form-btn {
+    --background: #3760B2;
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.input-form-btn {
+    height: 40px;
+    width: 100px;
+}
+
+.id-input {
+    border: 2px solid black!important;
+    border-radius: 5px;
+    height: 40px;
+}
+
+
+.toggle {
+    --ion-background-color: #A7B6CB !important;
+    width: fit-content;
+    margin: 0 auto;
+    --border-color: transparent!important;
+}
+
+
+.header-wrapper {
+    background: #395FB2;
+}
+.mt-0 {
+    margin-top: 0!important;
+}
+
+.margin-auto {
+    margin: 0 auto;
+}
+
+.w-100 {
+    width: 100%;
+}
+
+.overflow-x-auto {
+    overflow-x: auto;
+}
+.bg-secondary {
+    --background:#A7B6CB!important ;
+}
+
+.input-col {
+    max-width: 350px!important;
+}
+
+.bg-primary {
+    background-color: #3760B2!important;
+}
+@media screen and (max-width:768px) {
+    
+    .wrapper {
+        padding: 0.6rem!important;
+        .table-top { 
+            .header, .body {
+                text-align: left!important;
+            }
+            .body {
+                padding: 0.8rem 2rem!important;
+            }
+        }
+        .data-table {
+            margin: 0!important;
+        }
+    }
+}
+@media screen and (max-width:575px) {
+    .input-col {
+        max-width: unset!important;
+    }
+    .input-form-btn {
+        margin: 0!important;
+        width: 100%;
+    }
+    .continue-btn {
+        width: 100%;
+        margin: 16px 0!important;
+    }
+}
