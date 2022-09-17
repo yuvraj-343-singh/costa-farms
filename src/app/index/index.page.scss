@@ -6,3 +6,17 @@
     border-radius: 10px;
     overflow: hidden;
 }
+
+.fill-input {
+    min-width: 100px;
+}
+
+table {
+    tbody {
+        tr {
+            td {
+                vertical-align: middle;
+            }
+        }
+    }
+}
